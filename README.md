@@ -4,9 +4,7 @@
 
  HI  my name is ADITYA KUMAR SINGH.I am from TECHNO INDIA UNIVERSITY taking COMPUTER SCIENCE.
 🌱 I’m currently learning ...
-
-
-  #####📫 How to reach me: ...   
+📫 How to reach me: ...   
 
 
 <!--
