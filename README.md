@@ -3,7 +3,11 @@
 ![Screenshot 2023-09-01 202758](https://github.com/ADITYAKUMARSINGH16/my-personal/assets/74896018/82e5fa17-9abf-4258-8267-e8dc76445ec2)
 
  HI  my name is ADITYA KUMAR SINGH.I am from TECHNO INDIA UNIVERSITY taking COMPUTER SCIENCE.
+
+
 🌱 I’m currently learning ...
+
+
 📫 How to reach me: ...   
 
 
