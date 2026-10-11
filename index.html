@@ -693,12 +693,17 @@
 
         <div class="form-group">
           <label>LinkedIn URL</label>
-          <input type="text" id="input-linkedin" class="form-control" value="https://linkedin.com/in/adityakumarsingh16" oninput="saveAndRender()">
+          <input type="text" id="input-linkedin" class="form-control" value="https://www.linkedin.com/in/aditya-kumar-singh-7a439b315/" oninput="saveAndRender()">
         </div>
 
         <div class="form-group">
-          <label>LeetCode Username (Optional)</label>
-          <input type="text" id="input-leetcode" class="form-control" value="" placeholder="e.g. adityakumarsingh (optional)" oninput="saveAndRender()">
+          <label>LeetCode Username</label>
+          <input type="text" id="input-leetcode" class="form-control" value="singhaditya7864" placeholder="e.g. singhaditya7864" oninput="saveAndRender()">
+        </div>
+
+        <div class="form-group">
+          <label>GeeksforGeeks Username</label>
+          <input type="text" id="input-gfg" class="form-control" value="singhaditya7864" placeholder="e.g. singhaditya7864" oninput="saveAndRender()">
         </div>
       </div>
 
@@ -1002,8 +1007,9 @@
       const name = document.getElementById('input-name').value.trim() || 'Aditya Kumar Singh';
       const uni = document.getElementById('input-uni').value.trim() || 'Computer Science & Engineering • Techno India University';
       const email = document.getElementById('input-email').value.trim() || 'singhaditya7864@gmail.com';
-      const linkedin = document.getElementById('input-linkedin').value.trim() || 'https://linkedin.com/in/adityakumarsingh16';
-      const leetcode = document.getElementById('input-leetcode').value.trim() || 'adityakumarsingh16';
+      const linkedin = document.getElementById('input-linkedin').value.trim() || 'https://www.linkedin.com/in/aditya-kumar-singh-7a439b315/';
+      const leetcode = document.getElementById('input-leetcode').value.trim() || 'singhaditya7864';
+      const gfg = document.getElementById('input-gfg') ? document.getElementById('input-gfg').value.trim() : 'singhaditya7864';
       const typingRaw = document.getElementById('input-typing-lines').value.trim();
       const typingEncoded = encodeURIComponent(typingRaw);
 
@@ -1056,7 +1062,11 @@
     </a>` + (leetcode ? `
     &nbsp;
     <a href="https://leetcode.com/u/${leetcode}/" target="_blank">
-      <img src="https://img.shields.io/badge/LeetCode-Profile-FFA116?style=for-the-badge&logo=leetcode&logoColor=white" alt="LeetCode" />
+      <img src="https://img.shields.io/badge/LeetCode-${leetcode}-FFA116?style=for-the-badge&logo=leetcode&logoColor=white" alt="LeetCode" />
+    </a>` : '') + (gfg ? `
+    &nbsp;
+    <a href="https://www.geeksforgeeks.org/profile/${gfg}" target="_blank">
+      <img src="https://img.shields.io/badge/GeeksforGeeks-${gfg}-2F8D46?style=for-the-badge&logo=geeksforgeeks&logoColor=white" alt="GeeksforGeeks" />
     </a>` : '') + `
     &nbsp;
     <img src="https://komarev.com/ghpvc/?username=ADITYAKUMARSINGH16&label=Profile%20Views&color=2563eb&style=for-the-badge" alt="Profile Views" />
@@ -1232,7 +1242,11 @@ ${projectsTable}` + (showAccreditations ? `
   </a>` + (leetcode ? `
   &nbsp;
   <a href="https://leetcode.com/u/${leetcode}/" target="_blank">
-    <img src="https://img.shields.io/badge/LeetCode-Profile-FFA116?style=flat-square&logo=leetcode&logoColor=white" alt="LeetCode" />
+    <img src="https://img.shields.io/badge/LeetCode-${leetcode}-FFA116?style=flat-square&logo=leetcode&logoColor=white" alt="LeetCode" />
+  </a>` : '') + (gfg ? `
+  &nbsp;
+  <a href="https://www.geeksforgeeks.org/profile/${gfg}" target="_blank">
+    <img src="https://img.shields.io/badge/GeeksforGeeks-${gfg}-2F8D46?style=flat-square&logo=geeksforgeeks&logoColor=white" alt="GeeksforGeeks" />
   </a>` : '') + `
 
 </div>`;
@@ -1279,6 +1293,7 @@ ${projectsTable}` + (showAccreditations ? `
           email: document.getElementById('input-email').value,
           linkedin: document.getElementById('input-linkedin').value,
           leetcode: document.getElementById('input-leetcode').value,
+          gfg: document.getElementById('input-gfg') ? document.getElementById('input-gfg').value : 'singhaditya7864',
           typing: document.getElementById('input-typing-lines').value,
           selectedSkills: selectedSkills,
           projects: projects,
@@ -1317,6 +1332,7 @@ ${projectsTable}` + (showAccreditations ? `
           if (state.email !== undefined) document.getElementById('input-email').value = state.email;
           if (state.linkedin !== undefined) document.getElementById('input-linkedin').value = state.linkedin;
           if (state.leetcode !== undefined) document.getElementById('input-leetcode').value = state.leetcode;
+          if (state.gfg !== undefined && document.getElementById('input-gfg')) document.getElementById('input-gfg').value = state.gfg;
           if (state.typing !== undefined) document.getElementById('input-typing-lines').value = state.typing;
           if (state.selectedSkills) selectedSkills = state.selectedSkills;
           if (state.projects) projects = state.projects;

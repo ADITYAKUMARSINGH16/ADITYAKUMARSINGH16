@@ -16,7 +16,7 @@
       <img src="https://img.shields.io/badge/Email-singhaditya7864%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" />
     </a>
     &nbsp;
-    <a href="https://linkedin.com/in/adityakumarsingh16" target="_blank">
+    <a href="https://www.linkedin.com/in/aditya-kumar-singh-7a439b315/" target="_blank">
       <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
     </a>
     &nbsp;
@@ -24,8 +24,12 @@
       <img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
     </a>
     &nbsp;
-    <a href="https://leetcode.com/u/adityakumarsingh16/" target="_blank">
-      <img src="https://img.shields.io/badge/LeetCode-Profile-FFA116?style=for-the-badge&logo=leetcode&logoColor=white" alt="LeetCode" />
+    <a href="https://leetcode.com/u/singhaditya7864/" target="_blank">
+      <img src="https://img.shields.io/badge/LeetCode-singhaditya7864-FFA116?style=for-the-badge&logo=leetcode&logoColor=white" alt="LeetCode" />
+    </a>
+    &nbsp;
+    <a href="https://www.geeksforgeeks.org/profile/singhaditya7864" target="_blank">
+      <img src="https://img.shields.io/badge/GeeksforGeeks-singhaditya7864-2F8D46?style=for-the-badge&logo=geeksforgeeks&logoColor=white" alt="GeeksforGeeks" />
     </a>
     &nbsp;
     <img src="https://komarev.com/ghpvc/?username=ADITYAKUMARSINGH16&label=Profile%20Views&color=2563eb&style=for-the-badge" alt="Profile Views" />
@@ -152,6 +156,14 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
 
 </div>
 
+---
+
+### 🧩 LeetCode & Problem Solving
+
+<div align="center">
+  <a href="https://leetcode.com/u/singhaditya7864/" target="_blank">
+    <img src="https://leetcard.jacoblin.cool/singhaditya7864?theme=dark&font=Fira%20Code" alt="Aditya's LeetCode Stats" />
+  </a>
 </div>
 
 ---
@@ -184,7 +196,7 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
     <img src="https://img.shields.io/badge/Gmail-singhaditya7864%40gmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white" alt="Gmail" />
   </a>
   &nbsp;
-  <a href="https://linkedin.com/in/adityakumarsingh16" target="_blank">
+  <a href="https://www.linkedin.com/in/aditya-kumar-singh-7a439b315/" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
   &nbsp;
@@ -192,8 +204,12 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
     <img src="https://img.shields.io/badge/GitHub-ADITYAKUMARSINGH16-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" />
   </a>
   &nbsp;
-  <a href="https://leetcode.com/u/adityakumarsingh16/" target="_blank">
-    <img src="https://img.shields.io/badge/LeetCode-Profile-FFA116?style=flat-square&logo=leetcode&logoColor=white" alt="LeetCode" />
+  <a href="https://leetcode.com/u/singhaditya7864/" target="_blank">
+    <img src="https://img.shields.io/badge/LeetCode-singhaditya7864-FFA116?style=flat-square&logo=leetcode&logoColor=white" alt="LeetCode" />
+  </a>
+  &nbsp;
+  <a href="https://www.geeksforgeeks.org/profile/singhaditya7864" target="_blank">
+    <img src="https://img.shields.io/badge/GeeksforGeeks-singhaditya7864-2F8D46?style=flat-square&logo=geeksforgeeks&logoColor=white" alt="GeeksforGeeks" />
   </a>
 
 </div>
