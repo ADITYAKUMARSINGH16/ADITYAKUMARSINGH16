@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Profile README Studio & Live Generator | Aditya Kumar Singh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-dark.min.css" id="markdown-theme-css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    :root {
+      --bg-primary: #0a0e17;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(56, 189, 248, 0.4);
+      --accent-color: #38bdf8;
+      --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --input-bg: rgba(15, 23, 42, 0.8);
+      --sidebar-width: 440px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-main);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Ambient background glows */
+    .glow-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .glow-circle-1 {
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(0,0,0,0) 70%);
+      top: -100px;
+      left: -100px;
+    }
+
+    .glow-circle-2 {
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.12) 0%, rgba(0,0,0,0) 70%);
+      bottom: -150px;
+      right: -100px;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      z-index: 10;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(10, 14, 23, 0.85);
+      backdrop-filter: blur(14px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.35);
+    }
+
+    .logo-title {
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 20px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-color);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      border-color: var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #050b14;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .btn-accent {
+      background: #10b981;
+      color: #fff;
+    }
+    .btn-accent:hover {
+      background: #059669;
+    }
+
+    /* Main Layout */
+    .app-main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: grid;
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr);
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Left Controls */
+    .controls-panel {
+      background: rgba(13, 17, 23, 0.85);
+      border-right: 1px solid var(--border-color);
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .control-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: border-color 0.2s;
+    }
+
+    .control-section:hover {
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .control-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      letter-spacing: -0.01em;
+    }
+
+    .control-title span.badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.15rem 0.45rem;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-color);
+      border-radius: 4px;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .form-control {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.6rem 0.85rem;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 80px;
+      line-height: 1.4;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+    }
+
+    /* Themes Grid */
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .theme-card {
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .theme-card:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .theme-card.active {
+      border-color: var(--accent-color);
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-color);
+    }
+
+    .theme-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    /* Toggles */
+    .toggle-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .toggle-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0.8rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      font-size: 0.82rem;
+      transition: all 0.2s;
+    }
+
+    .toggle-item:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .toggle-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--accent-color);
+      cursor: pointer;
+    }
+
+    /* Tech Stack Selector Chips */
+    .skills-category {
+      margin-bottom: 0.85rem;
+    }
+    .skills-category-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.35rem;
+    }
+    .chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tech-chip {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .tech-chip:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .tech-chip.selected {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: var(--accent-color);
+      color: #38bdf8;
+      font-weight: 600;
+    }
+
+    /* Projects Editor */
+    .project-item {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .project-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .project-del-btn {
+      background: transparent;
+      border: none;
+      color: #ef4444;
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+    }
+    .project-del-btn:hover {
+      background: rgba(239, 68, 68, 0.15);
+    }
+
+    /* Right Preview Section */
+    .preview-panel {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: rgba(13, 17, 23, 0.9);
+      overflow: hidden;
+    }
+
+    .preview-toolbar {
+      padding: 0.75rem 1.75rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 14, 23, 0.7);
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .tab-group {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .tab-btn {
+      padding: 0.45rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 6px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--border-color);
+      color: var(--text-main);
+    }
+
+    .view-simulators {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .sim-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sim-toggle:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--text-main);
+    }
+    .sim-toggle.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    .preview-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 2.5rem;
+      display: flex;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+
+    .preview-wrapper {
+      width: 100%;
+      max-width: 960px;
+      transition: max-width 0.3s ease;
+    }
+
+    .raw-content {
+      display: none;
+      flex: 1;
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+
+    .raw-textarea {
+      width: 100%;
+      height: 100%;
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+      resize: none;
+      line-height: 1.55;
+      outline: none;
+    }
+
+    /* GitHub Markdown Styling */
+    .markdown-body {
+      background: transparent !important;
+      color: #e6edf3;
+    }
+
+    /* GitHub Light theme simulation mode */
+    .theme-gh-light .preview-content {
+      background: #ffffff !important;
+    }
+    .theme-gh-light .markdown-body {
+      color: #1f2328 !important;
+    }
+    .theme-gh-light .markdown-body table td,
+    .theme-gh-light .markdown-body table th {
+      border-color: #d0d7de !important;
+      color: #1f2328 !important;
+    }
+    .theme-gh-light .markdown-body hr {
+      border-color: #d0d7de !important;
+      background-color: #d0d7de !important;
+    }
+    .theme-gh-light .markdown-body pre {
+      background-color: #f6f8fa !important;
+      color: #1f2328 !important;
+    }
+
+    .markdown-body table {
+      width: 100%;
+      display: table !important;
+    }
+
+    .markdown-body table td, .markdown-body table th {
+      border-color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #10b981;
+      color: #fff;
+      padding: 0.85rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.35);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .app-main {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .controls-panel {
+        height: auto;
+      }
+      .preview-panel {
+        min-height: 800px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-bg">
+    <div class="glow-circle-1"></div>
+    <div class="glow-circle-2"></div>
+  </div>
+
+  <header>
+    <div class="logo-container">
+      <div class="logo-icon">🚀</div>
+      <div>
+        <div class="logo-title">ADITYAKUMARSINGH16 <span class="logo-badge">Studio 2.0</span></div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-secondary" onclick="resetToDefaults()" title="Reset all fields to original template">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M1.705 8.001a6.295 6.295 0 1 1 1.846 4.453.75.75 0 0 0-1.06 1.06A7.795 7.795 0 1 0 1.25 8h.705a.75.75 0 0 0 0-1.5H.75A.75.75 0 0 0 0 7.25v2a.75.75 0 0 0 1.5 0V8.001Z"/></svg>
+        Reset
+      </button>
+      <button class="btn btn-secondary" onclick="downloadMarkdown()" title="Download README.md directly">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14ZM7.25 1.75v7.69L4.47 6.66a.749.749 0 0 0-1.06 1.06l4.06 4.06a.75.75 0 0 0 1.06 0l4.06-4.06a.749.749 0 1 0-1.06-1.06L8.75 9.44V1.75a.75.75 0 0 0-1.5 0Z"/></svg>
+        Download .md
+      </button>
+      <button class="btn btn-secondary" onclick="openGitHubEdit()">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+        GitHub Edit
+      </button>
+      <button class="btn btn-primary" onclick="copyMarkdown()">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"/><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"/></svg>
+        Copy Markdown
+      </button>
+    </div>
+  </header>
+
+  <main class="app-main" id="appMain">
+
+    <!-- Controls Panel -->
+    <div class="controls-panel">
+
+      <!-- Theme & Style -->
+      <div class="control-section">
+        <div class="control-title">
+          <span>🎨 Stats & Widgets Theme</span>
+          <span class="badge" id="theme-badge-name">Tokyo Night</span>
+        </div>
+        <div class="theme-grid">
+          <div class="theme-card active" onclick="setStatsTheme('tokyonight', this)">
+            <span class="theme-dot" style="background: #38bdf8;"></span> Tokyo Night
+          </div>
+          <div class="theme-card" onclick="setStatsTheme('catppuccin_mocha', this)">
+            <span class="theme-dot" style="background: #cba6f7;"></span> Catppuccin
+          </div>
+          <div class="theme-card" onclick="setStatsTheme('radical', this)">
+            <span class="theme-dot" style="background: #fe428e;"></span> Radical
+          </div>
+          <div class="theme-card" onclick="setStatsTheme('dark', this)">
+            <span class="theme-dot" style="background: #58a6ff;"></span> Minimal Dark
+          </div>
+          <div class="theme-card" onclick="setStatsTheme('dracula', this)">
+            <span class="theme-dot" style="background: #bd93f9;"></span> Dracula
+          </div>
+          <div class="theme-card" onclick="setStatsTheme('gruvbox', this)">
+            <span class="theme-dot" style="background: #fabd2f;"></span> Gruvbox
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Info -->
+      <div class="control-section">
+        <div class="control-title">👤 Personal Details & Links</div>
+        
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="input-name" class="form-control" value="Aditya Kumar Singh" oninput="saveAndRender()">
+        </div>
+
+        <div class="form-group">
+          <label>University / Degree</label>
+          <input type="text" id="input-uni" class="form-control" value="Computer Science & Engineering • Techno India University" oninput="saveAndRender()">
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="input-email" class="form-control" value="singhaditya7864@gmail.com" oninput="saveAndRender()">
+        </div>
+
+        <div class="form-group">
+          <label>LinkedIn URL</label>
+          <input type="text" id="input-linkedin" class="form-control" value="https://linkedin.com/in/adityakumarsingh16" oninput="saveAndRender()">
+        </div>
+
+        <div class="form-group">
+          <label>LeetCode Username (Optional)</label>
+          <input type="text" id="input-leetcode" class="form-control" value="" placeholder="e.g. adityakumarsingh (optional)" oninput="saveAndRender()">
+        </div>
+      </div>
+
+      <!-- Typing Banner Lines -->
+      <div class="control-section">
+        <div class="control-title">⚡ Animated Typing Lines</div>
+        <div class="form-group">
+          <label>Lines (Semicolon ; separated)</label>
+          <textarea id="input-typing-lines" class="form-control" rows="3" oninput="saveAndRender()">Passionate about Artificial Intelligence;Building Autonomous AI Assistants;Developing Offline Legal Tech & Automation;Crafting Modern Full-Stack & IoT Solutions</textarea>
+        </div>
+      </div>
+
+      <!-- Dynamic Live Widgets Toggles -->
+      <div class="control-section">
+        <div class="control-title">🧩 Dynamic Profile Widgets</div>
+        <div class="toggle-group">
+          <label class="toggle-item">
+            <span>🧩 LeetCode Stats Card</span>
+            <input type="checkbox" id="toggle-leetcode-card" checked onchange="saveAndRender()">
+          </label>
+          <label class="toggle-item">
+            <span>🐍 Contribution Snake Animation</span>
+            <input type="checkbox" id="toggle-snake" checked onchange="saveAndRender()">
+          </label>
+          <label class="toggle-item">
+            <span>📊 GitHub Stats & Top Languages</span>
+            <input type="checkbox" id="toggle-stats" checked onchange="saveAndRender()">
+          </label>
+          <label class="toggle-item">
+            <span>📈 Productive Hours & Summary Cards</span>
+            <input type="checkbox" id="toggle-productivity" checked onchange="saveAndRender()">
+          </label>
+          <label class="toggle-item">
+            <span>🔥 GitHub Streak Stats</span>
+            <input type="checkbox" id="toggle-streak" checked onchange="saveAndRender()">
+          </label>
+          <label class="toggle-item">
+            <span>📜 Recent GitHub Activity Feed</span>
+            <input type="checkbox" id="toggle-recent" checked onchange="saveAndRender()">
+          </label>
+          <label class="toggle-item">
+            <span>🌟 Accreditations Collapsible Drawer</span>
+            <input type="checkbox" id="toggle-accreditations" checked onchange="saveAndRender()">
+          </label>
+          <label class="toggle-item">
+            <span>🏆 GitHub Profile Trophies (Optional)</span>
+            <input type="checkbox" id="toggle-trophies" onchange="saveAndRender()">
+          </label>
+          <label class="toggle-item">
+            <span>💡 Daily Dev Byte Quote</span>
+            <input type="checkbox" id="toggle-quotes" checked onchange="saveAndRender()">
+          </label>
+        </div>
+      </div>
+
+      <!-- Interactive Tech Stack Selector -->
+      <div class="control-section">
+        <div class="control-title">🛠️ Tech Stack & Skills (Click to Toggle)</div>
+
+        <div class="skills-category">
+          <div class="skills-category-title">Languages & Core</div>
+          <div class="chips-container" id="chips-languages"></div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-category-title">AI & Data Science</div>
+          <div class="chips-container" id="chips-ai"></div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-category-title">Frameworks & Backend</div>
+          <div class="chips-container" id="chips-web"></div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-category-title">Tools & DevOps</div>
+          <div class="chips-container" id="chips-tools"></div>
+        </div>
+      </div>
+
+      <!-- Featured Projects Manager -->
+      <div class="control-section">
+        <div class="control-title">
+          <span>🚀 Featured Repositories</span>
+          <button class="btn btn-secondary" style="padding: 0.2rem 0.6rem; font-size: 0.72rem;" onclick="addProjectRow()">+ Add</button>
+        </div>
+        <div id="projects-list-container"></div>
+      </div>
+
+    </div>
+
+    <!-- Preview Panel -->
+    <div class="preview-panel" id="previewPanel">
+      <div class="preview-toolbar">
+        <div class="tab-group">
+          <button class="tab-btn active" id="tab-preview-btn" onclick="switchTab('preview')">Live GitHub Preview</button>
+          <button class="tab-btn" id="tab-raw-btn" onclick="switchTab('raw')">Raw Markdown</button>
+        </div>
+
+        <div class="view-simulators">
+          <!-- Dark / Light Simulator -->
+          <button class="sim-toggle active" id="btn-theme-mode" onclick="toggleGitHubThemeMode()">
+            <span id="theme-mode-icon">🌙</span> <span id="theme-mode-text">Dark Mode</span>
+          </button>
+          <!-- Viewport Mode -->
+          <button class="sim-toggle active" id="btn-view-desktop" onclick="setViewport('desktop')">🖥️ Desktop</button>
+          <button class="sim-toggle" id="btn-view-mobile" onclick="setViewport('mobile')">📱 Mobile</button>
+        </div>
+      </div>
+
+      <div class="preview-content" id="preview-container">
+        <div class="preview-wrapper" id="previewWrapper">
+          <div class="markdown-body" id="rendered-markdown"></div>
+        </div>
+      </div>
+
+      <div class="raw-content" id="raw-container">
+        <textarea id="raw-markdown-text" class="raw-textarea" readonly></textarea>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="toast" id="toast">
+    <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75 7.75 0 0 1 1.06 0Z"/></svg>
+    <span id="toast-message">Copied to clipboard! Ready to paste into GitHub.</span>
+  </div>
+
+  <script>
+    // State management
+    let currentTheme = 'tokyonight';
+    let isGitHubLight = false;
+
+    // Predefined skill chips
+    const skillsData = {
+      languages: [
+        { id: 'python', label: 'Python', default: true },
+        { id: 'javascript', label: 'JavaScript', default: true },
+        { id: 'typescript', label: 'TypeScript', default: true },
+        { id: 'c', label: 'C', default: true },
+        { id: 'cpp', label: 'C++', default: true },
+        { id: 'html', label: 'HTML5', default: true },
+        { id: 'css', label: 'CSS3', default: true },
+        { id: 'java', label: 'Java', default: false },
+        { id: 'rust', label: 'Rust', default: false },
+        { id: 'go', label: 'Go', default: false }
+      ],
+      ai: [
+        { id: 'opencv', label: 'OpenCV', default: true },
+        { id: 'pytorch', label: 'PyTorch', default: true },
+        { id: 'tensorflow', label: 'TensorFlow', default: true },
+        { id: 'fastapi', label: 'FastAPI', default: true },
+        { id: 'flask', label: 'Flask', default: true }
+      ],
+      web: [
+        { id: 'nodejs', label: 'Node.js', default: true },
+        { id: 'express', label: 'Express', default: true },
+        { id: 'react', label: 'React', default: false },
+        { id: 'nextjs', label: 'Next.js', default: false },
+        { id: 'tailwind', label: 'Tailwind CSS', default: false }
+      ],
+      tools: [
+        { id: 'git', label: 'Git', default: true },
+        { id: 'github', label: 'GitHub', default: true },
+        { id: 'vscode', label: 'VS Code', default: true },
+        { id: 'docker', label: 'Docker', default: true },
+        { id: 'linux', label: 'Linux', default: true },
+        { id: 'postman', label: 'Postman', default: true },
+        { id: 'mongodb', label: 'MongoDB', default: true },
+        { id: 'postgres', label: 'PostgreSQL', default: true }
+      ]
+    };
+
+    let selectedSkills = {
+      languages: ['python', 'javascript', 'typescript', 'c', 'cpp', 'html', 'css'],
+      ai: ['opencv', 'pytorch', 'tensorflow', 'fastapi', 'flask'],
+      web: ['nodejs', 'express'],
+      tools: ['git', 'github', 'vscode', 'docker', 'linux', 'postman', 'mongodb', 'postgres']
+    };
+
+    let projects = [
+      {
+        emoji: '⚖️',
+        title: 'nayaya-ai-offline',
+        url: 'https://github.com/ADITYAKUMARSINGH16/nayaya-ai-offline',
+        desc: 'Offline, privacy-centric AI legal & judicial assistant designed to analyze legal queries without internet dependency.',
+        tech: '`Python` `NLP` `Local LLMs`'
+      },
+      {
+        emoji: '🎙️',
+        title: 'AURA-AI_ASSISTANT',
+        url: 'https://github.com/ADITYAKUMARSINGH16/AURA-AI_ASSISTANT',
+        desc: 'Voice & desktop conversational AI assistant that automates daily routines and system commands.',
+        tech: '`Python` `Speech-to-Text` `Automation`'
+      },
+      {
+        emoji: '📥',
+        title: 'OmniDownloader',
+        url: 'https://github.com/ADITYAKUMARSINGH16/OmniDownloader',
+        desc: 'Multi-platform, high-speed downloader utility for media streams and files.',
+        tech: '`Python` `GUI` `Networking`'
+      },
+      {
+        emoji: '🎭',
+        title: 'Emotion-Detector',
+        url: 'https://github.com/ADITYAKUMARSINGH16/Emotion-Detector',
+        desc: 'Real-time computer vision system detecting human emotions using CNNs and facial landmark tracking.',
+        tech: '`Python` `OpenCV` `Deep Learning`'
+      },
+      {
+        emoji: '💡',
+        title: 'Wiz-Bulb-Sync',
+        url: 'https://github.com/ADITYAKUMARSINGH16/Wiz-Bulb-Sync',
+        desc: 'IoT synchronization system providing ambient lighting control with smart bulbs.',
+        tech: '`Python` `IoT` `Networking`'
+      },
+      {
+        emoji: '🗺️',
+        title: 'India-Interactive-Map',
+        url: 'https://github.com/ADITYAKUMARSINGH16/India-Interactive-Map',
+        desc: "Interactive web visualizer showcasing India's states and territories with rich geospatial data.",
+        tech: '`HTML5` `CSS3` `JavaScript`'
+      }
+    ];
+
+    function initSkillChips() {
+      for (const [category, items] of Object.entries(skillsData)) {
+        const container = document.getElementById(`chips-${category}`);
+        if (!container) continue;
+        container.innerHTML = '';
+        items.forEach(item => {
+          const chip = document.createElement('div');
+          const isSelected = selectedSkills[category].includes(item.id);
+          chip.className = `tech-chip ${isSelected ? 'selected' : ''}`;
+          chip.textContent = item.label;
+          chip.onclick = () => toggleSkill(category, item.id, chip);
+          container.appendChild(chip);
+        });
+      }
+    }
+
+    function toggleSkill(category, id, chipEl) {
+      const idx = selectedSkills[category].indexOf(id);
+      if (idx > -1) {
+        selectedSkills[category].splice(idx, 1);
+        chipEl.classList.remove('selected');
+      } else {
+        selectedSkills[category].push(id);
+        chipEl.classList.add('selected');
+      }
+      saveAndRender();
+    }
+
+    function renderProjectsEditor() {
+      const container = document.getElementById('projects-list-container');
+      container.innerHTML = '';
+      projects.forEach((proj, idx) => {
+        const div = document.createElement('div');
+        div.className = 'project-item';
+        div.innerHTML = `
+          <div class="project-item-header">
+            <span style="font-size: 0.82rem; font-weight: 700; color: #38bdf8;">${proj.emoji} ${proj.title}</span>
+            <button class="project-del-btn" onclick="removeProjectRow(${idx})" title="Delete project">✕</button>
+          </div>
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 0.4rem;">
+            <input type="text" class="form-control" style="width: 50px;" value="${proj.emoji}" oninput="updateProjectProp(${idx}, 'emoji', this.value)">
+            <input type="text" class="form-control" style="flex: 1;" value="${proj.title}" oninput="updateProjectProp(${idx}, 'title', this.value)">
+          </div>
+          <input type="text" class="form-control" style="margin-bottom: 0.4rem; font-size: 0.75rem;" value="${proj.url}" placeholder="URL" oninput="updateProjectProp(${idx}, 'url', this.value)">
+          <textarea class="form-control" style="min-height: 48px; font-size: 0.75rem; margin-bottom: 0.4rem;" oninput="updateProjectProp(${idx}, 'desc', this.value)">${proj.desc}</textarea>
+          <input type="text" class="form-control" style="font-size: 0.75rem;" value="${proj.tech}" placeholder="Tech Tags" oninput="updateProjectProp(${idx}, 'tech', this.value)">
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function addProjectRow() {
+      projects.push({
+        emoji: '🚀',
+        title: 'New-Project',
+        url: 'https://github.com/ADITYAKUMARSINGH16/New-Project',
+        desc: 'Description of your awesome new open-source project or repository.',
+        tech: '`Python` `AI`'
+      });
+      renderProjectsEditor();
+      saveAndRender();
+    }
+
+    function removeProjectRow(idx) {
+      projects.splice(idx, 1);
+      renderProjectsEditor();
+      saveAndRender();
+    }
+
+    function updateProjectProp(idx, prop, val) {
+      projects[idx][prop] = val;
+      saveAndRender();
+    }
+
+    function generateMarkdown() {
+      const name = document.getElementById('input-name').value.trim() || 'Aditya Kumar Singh';
+      const uni = document.getElementById('input-uni').value.trim() || 'Computer Science & Engineering • Techno India University';
+      const email = document.getElementById('input-email').value.trim() || 'singhaditya7864@gmail.com';
+      const linkedin = document.getElementById('input-linkedin').value.trim() || 'https://linkedin.com/in/adityakumarsingh16';
+      const leetcode = document.getElementById('input-leetcode').value.trim() || 'adityakumarsingh16';
+      const typingRaw = document.getElementById('input-typing-lines').value.trim();
+      const typingEncoded = encodeURIComponent(typingRaw);
+
+      const showTrophies = document.getElementById('toggle-trophies').checked;
+      const showLeetCodeCard = document.getElementById('toggle-leetcode-card') ? document.getElementById('toggle-leetcode-card').checked : true;
+      const showSnake = document.getElementById('toggle-snake').checked;
+      const showStats = document.getElementById('toggle-stats').checked;
+      const showProductivity = document.getElementById('toggle-productivity').checked;
+      const showStreak = document.getElementById('toggle-streak').checked;
+      const showRecent = document.getElementById('toggle-recent').checked;
+      const showAccreditations = document.getElementById('toggle-accreditations').checked;
+      const showQuotes = document.getElementById('toggle-quotes').checked;
+
+      // Tech icons
+      const langIcons = selectedSkills.languages.join(',');
+      const aiIcons = selectedSkills.ai.join(',');
+      const webIcons = selectedSkills.web.join(',');
+      const toolIcons = selectedSkills.tools.join(',');
+
+      // Featured projects table
+      let projectsTable = `| Project | Description | Tech Stack |\n| :--- | :--- | :--- |\n`;
+      projects.forEach(p => {
+        projectsTable += `| ${p.emoji} **[${p.title}](${p.url})** | ${p.desc} | ${p.tech} |\n`;
+      });
+
+      return `<div align="center">
+
+  <h1>Hi there, I'm ${name} <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" alt="Waving Hand"></h1>
+  
+  <p align="center">
+    <strong>${uni}</strong><br>
+    <em>AI &amp; Machine Learning Enthusiast &bull; Full-Stack &amp; IoT Developer</em>
+  </p>
+
+  <a href="https://github.com/ADITYAKUMARSINGH16">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=1000&color=38BDF8&center=true&vCenter=true&width=620&lines=${typingEncoded}" alt="Typing SVG" />
+  </a>
+
+  <p align="center">
+    <a href="mailto:${email}">
+      <img src="https://img.shields.io/badge/Email-${encodeURIComponent(email)}-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" />
+    </a>
+    &nbsp;
+    <a href="${linkedin}" target="_blank">
+      <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+    </a>
+    &nbsp;
+    <a href="https://github.com/ADITYAKUMARSINGH16">
+      <img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+    </a>` + (leetcode ? `
+    &nbsp;
+    <a href="https://leetcode.com/u/${leetcode}/" target="_blank">
+      <img src="https://img.shields.io/badge/LeetCode-Profile-FFA116?style=for-the-badge&logo=leetcode&logoColor=white" alt="LeetCode" />
+    </a>` : '') + `
+    &nbsp;
+    <img src="https://komarev.com/ghpvc/?username=ADITYAKUMARSINGH16&label=Profile%20Views&color=2563eb&style=for-the-badge" alt="Profile Views" />
+  </p>
+
+</div>` + (showTrophies ? `
+
+---
+
+### 🏆 GitHub Achievements & Trophies
+
+<div align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=ADITYAKUMARSINGH16&theme=${currentTheme}&no-frame=true&no-bg=true&margin-w=4&row=1&column=7" alt="GitHub Trophies" />
+</div>` : '') + `
+
+---
+
+### 👨‍💻 About Me
+
+\`\`\`yaml
+name: ${name}
+education: ${uni}
+focus_areas:
+  - Artificial Intelligence & Machine Learning
+  - Full-Stack Software Engineering
+  - IoT & Ambient Hardware Automation
+  - Autonomous Systems & Workflow Automation
+current_status: Building AI assistants, offline intelligence systems & developer utilities
+passions: Clean Code, Open Source, Deep Learning, Problem Solving
+\`\`\`
+
+- 🎓 **Undergraduate** in **Computer Science & Engineering** at **Techno India University**.
+- 🤖 **AI Enthusiast**: Creator of **Nayaya AI** (offline legal intelligence) and **AURA** (voice & system conversational AI).
+- 💡 **Builder**: Passionate about developing real-world solutions spanning AI/ML, IoT automation, and interactive web apps.
+- 🌱 **Continuously Learning**: Exploring Large Language Models (LLMs), RAG pipelines, and agentic workflows.
+- 💬 **Ask me about**: Python, JavaScript, AI integration, OpenCV, IoT device synchronization, or system automation.
+
+---
+
+### 🛠️ Tech Stack & Tools
+
+<div align="center">
+
+#### Languages & Core
+<p>
+  <img src="https://skillicons.dev/icons?i=${langIcons}&perline=7" alt="Languages" />
+</p>
+
+#### AI / Data Science & Frameworks
+<p>
+  <img src="https://skillicons.dev/icons?i=${aiIcons}${webIcons ? ',' + webIcons : ''}&perline=7" alt="Frameworks & AI" />
+</p>
+
+#### Tools, Platforms & DevOps
+<p>
+  <img src="https://skillicons.dev/icons?i=${toolIcons}&perline=8" alt="Tools & Platforms" />
+</p>
+
+</div>
+
+---
+
+### 🚀 Featured Repositories & Highlights
+
+${projectsTable}` + (showAccreditations ? `
+---
+
+<details>
+<summary><b>🌟 Accreditations, Certifications & Milestones (Click to Expand)</b></summary>
+<br>
+
+- 🏅 **Techno India University Academic & Project Excellence** – CS & Engineering coursework & engineering labs.
+- 🤖 **Hands-on AI/ML R&D** – Offline LLM pipeline integration with Ollama/LangChain and Local Vector Stores.
+- ⚡ **Full-Stack & Hardware Prototyping** – End-to-end integration of IoT controllers with UDP/LAN ambient automation.
+- 🌐 **Open-Source Advocate** – Actively building and contributing developer utilities and open tooling.
+
+</details>` : '') + (showSnake ? `
+
+---
+
+### 🐍 Contribution Activity Graph
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ADITYAKUMARSINGH16/ADITYAKUMARSINGH16/output/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ADITYAKUMARSINGH16/ADITYAKUMARSINGH16/output/github-contribution-grid-snake.svg">
+    <img alt="Aditya's GitHub Contribution Grid Snake" src="https://raw.githubusercontent.com/ADITYAKUMARSINGH16/ADITYAKUMARSINGH16/output/github-contribution-grid-snake-dark.svg" width="100%" />
+  </picture>
+</div>` : '') + `
+
+---
+
+### 📊 GitHub Analytics & Productivity
+
+<div align="center">` + (showStats ? `
+
+  <table border="0">
+    <tr>
+      <td>
+        <img src="https://github-readme-stats.vercel.app/api?username=ADITYAKUMARSINGH16&show_icons=true&theme=${currentTheme}&hide_border=true&bg_color=0d1117&title_color=38bdf8&icon_color=38bdf8&text_color=e2e8f0" alt="Aditya's GitHub Stats" />
+      </td>
+      <td>
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ADITYAKUMARSINGH16&layout=compact&theme=${currentTheme}&hide_border=true&bg_color=0d1117&title_color=38bdf8&text_color=e2e8f0" alt="Top Languages" />
+      </td>
+    </tr>
+  </table>` : '') + (showProductivity ? `
+
+  <br />
+
+  <table border="0">
+    <tr>
+      <td>
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ADITYAKUMARSINGH16&theme=${currentTheme}" alt="Profile Details" />
+      </td>
+      <td>
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ADITYAKUMARSINGH16&theme=${currentTheme}&utcOffset=5.5" alt="Productive Hours (IST)" />
+      </td>
+    </tr>
+  </table>` : '') + (showStreak ? `
+
+  <br />
+
+  <img src="https://streak-stats.demolab.com/?user=ADITYAKUMARSINGH16&theme=${currentTheme}&hide_border=true&background=0d1117&ring=38bdf8&fire=f43f5e&currStreakLabel=38bdf8" alt="GitHub Streak" />` : '') + `
+
+</div>` + (showLeetCodeCard && leetcode ? `
+
+---
+
+### 🧩 LeetCode & Problem Solving
+
+<div align="center">
+  <a href="https://leetcode.com/u/${leetcode}/" target="_blank">
+    <img src="https://leetcard.jacoblin.cool/${leetcode}?theme=dark&font=Fira%20Code" alt="${name}'s LeetCode Stats" />
+  </a>
+</div>` : '') + (showRecent ? `
+
+---
+
+### ⚡ Recent GitHub Activity
+<!-- RECENT_ACTIVITY:start -->
+<!-- This section is dynamically updated automatically via GitHub Actions -->
+- 🚀 Created and maintained open-source repositories in AI, Full-Stack, and IoT
+- 🔧 Actively pushing updates and architectural improvements across personal projects
+- 🌟 Constantly experimenting with next-gen models and developer workflows
+<!-- RECENT_ACTIVITY:end -->` : '') + (showQuotes ? `
+
+---
+
+### 💡 Daily Dev Byte
+
+<div align="center">
+  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=${currentTheme}" alt="Daily Programming Quote" />
+</div>` : '') + `
+
+---
+
+### 📬 Get In Touch
+
+<div align="center">
+
+  <p>I'm always open to discussing new opportunities, collaborations, AI projects, or tech ideas!</p>
+
+  <a href="mailto:${email}">
+    <img src="https://img.shields.io/badge/Gmail-${encodeURIComponent(email)}-EA4335?style=flat-square&logo=gmail&logoColor=white" alt="Gmail" />
+  </a>
+  &nbsp;
+  <a href="${linkedin}" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/ADITYAKUMARSINGH16">
+    <img src="https://img.shields.io/badge/GitHub-ADITYAKUMARSINGH16-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" />
+  </a>` + (leetcode ? `
+  &nbsp;
+  <a href="https://leetcode.com/u/${leetcode}/" target="_blank">
+    <img src="https://img.shields.io/badge/LeetCode-Profile-FFA116?style=flat-square&logo=leetcode&logoColor=white" alt="LeetCode" />
+  </a>` : '') + `
+
+</div>`;
+    }
+
+    function saveAndRender() {
+      const md = generateMarkdown();
+      document.getElementById('rendered-markdown').innerHTML = marked.parse(md);
+      document.getElementById('raw-markdown-text').value = md;
+
+      // Handle ungenerated Snake gracefully in preview
+      document.querySelectorAll('#rendered-markdown img').forEach(img => {
+        img.onerror = function() {
+          if (this.src.includes('github-contribution-grid-snake') || this.alt.includes('Snake')) {
+            const notice = document.createElement('div');
+            notice.style.border = '1px dashed rgba(56, 189, 248, 0.4)';
+            notice.style.borderRadius = '8px';
+            notice.style.padding = '1.25rem';
+            notice.style.background = 'rgba(56, 189, 248, 0.05)';
+            notice.style.textAlign = 'center';
+            notice.style.color = '#94a3b8';
+            notice.style.fontSize = '0.85rem';
+            notice.style.margin = '1rem auto';
+            notice.style.maxWidth = '600px';
+            notice.innerHTML = `
+              <div style="font-size: 1.5rem; margin-bottom: 0.35rem;">🐍</div>
+              <strong style="color: #38bdf8;">Contribution Snake Pending GitHub Action Run</strong><br>
+              <span style="font-size: 0.8rem;">This will animate automatically once you push <code>.github/workflows/snake.yml</code> to GitHub and run the workflow.</span>`;
+            if (this.parentElement && this.parentElement.tagName === 'PICTURE') {
+              this.parentElement.replaceWith(notice);
+            } else {
+              this.replaceWith(notice);
+            }
+          }
+        };
+      });
+
+      // Persist state in localStorage
+      try {
+        const state = {
+          theme: currentTheme,
+          name: document.getElementById('input-name').value,
+          uni: document.getElementById('input-uni').value,
+          email: document.getElementById('input-email').value,
+          linkedin: document.getElementById('input-linkedin').value,
+          leetcode: document.getElementById('input-leetcode').value,
+          typing: document.getElementById('input-typing-lines').value,
+          selectedSkills: selectedSkills,
+          projects: projects,
+          toggles: {
+            leetcodeCard: document.getElementById('toggle-leetcode-card') ? document.getElementById('toggle-leetcode-card').checked : true,
+            trophies: document.getElementById('toggle-trophies').checked,
+            snake: document.getElementById('toggle-snake').checked,
+            stats: document.getElementById('toggle-stats').checked,
+            productivity: document.getElementById('toggle-productivity').checked,
+            streak: document.getElementById('toggle-streak').checked,
+            recent: document.getElementById('toggle-recent').checked,
+            accreditations: document.getElementById('toggle-accreditations').checked,
+            quotes: document.getElementById('toggle-quotes').checked
+          }
+        };
+        localStorage.setItem('gh_profile_studio_state', JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function loadPersistedState() {
+      try {
+        const saved = localStorage.getItem('gh_profile_studio_state');
+        if (saved) {
+          const state = JSON.parse(saved);
+          if (state.theme) {
+            currentTheme = state.theme;
+            const themeCard = document.querySelector(`.theme-card[onclick*="'${state.theme}'"]`);
+            if (themeCard) {
+              document.querySelectorAll('.theme-card').forEach(c => c.classList.remove('active'));
+              themeCard.classList.add('active');
+              document.getElementById('theme-badge-name').textContent = themeCard.innerText.trim();
+            }
+          }
+          if (state.name !== undefined) document.getElementById('input-name').value = state.name;
+          if (state.uni !== undefined) document.getElementById('input-uni').value = state.uni;
+          if (state.email !== undefined) document.getElementById('input-email').value = state.email;
+          if (state.linkedin !== undefined) document.getElementById('input-linkedin').value = state.linkedin;
+          if (state.leetcode !== undefined) document.getElementById('input-leetcode').value = state.leetcode;
+          if (state.typing !== undefined) document.getElementById('input-typing-lines').value = state.typing;
+          if (state.selectedSkills) selectedSkills = state.selectedSkills;
+          if (state.projects) projects = state.projects;
+          if (state.toggles) {
+            if (state.toggles.leetcodeCard !== undefined && document.getElementById('toggle-leetcode-card')) {
+              document.getElementById('toggle-leetcode-card').checked = state.toggles.leetcodeCard;
+            }
+            if (state.toggles.trophies !== undefined) document.getElementById('toggle-trophies').checked = state.toggles.trophies;
+            if (state.toggles.snake !== undefined) document.getElementById('toggle-snake').checked = state.toggles.snake;
+            if (state.toggles.stats !== undefined) document.getElementById('toggle-stats').checked = state.toggles.stats;
+            if (state.toggles.productivity !== undefined) document.getElementById('toggle-productivity').checked = state.toggles.productivity;
+            if (state.toggles.streak !== undefined) document.getElementById('toggle-streak').checked = state.toggles.streak;
+            if (state.toggles.recent !== undefined) document.getElementById('toggle-recent').checked = state.toggles.recent;
+            if (state.toggles.accreditations !== undefined) document.getElementById('toggle-accreditations').checked = state.toggles.accreditations;
+            if (state.toggles.quotes !== undefined) document.getElementById('toggle-quotes').checked = state.toggles.quotes;
+          }
+        }
+      } catch (e) {}
+    }
+
+    function resetToDefaults() {
+      if (!confirm('Reset all values to initial defaults?')) return;
+      localStorage.removeItem('gh_profile_studio_state');
+      location.reload();
+    }
+
+    function setStatsTheme(theme, el) {
+      currentTheme = theme;
+      document.querySelectorAll('.theme-card').forEach(card => card.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('theme-badge-name').textContent = el.innerText.trim();
+      saveAndRender();
+    }
+
+    function switchTab(tab) {
+      if (tab === 'preview') {
+        document.getElementById('preview-container').style.display = 'flex';
+        document.getElementById('raw-container').style.display = 'none';
+        document.getElementById('tab-preview-btn').classList.add('active');
+        document.getElementById('tab-raw-btn').classList.remove('active');
+      } else {
+        document.getElementById('preview-container').style.display = 'none';
+        document.getElementById('raw-container').style.display = 'block';
+        document.getElementById('tab-preview-btn').classList.remove('active');
+        document.getElementById('tab-raw-btn').classList.add('active');
+      }
+    }
+
+    function toggleGitHubThemeMode() {
+      isGitHubLight = !isGitHubLight;
+      const previewPanel = document.getElementById('previewPanel');
+      const icon = document.getElementById('theme-mode-icon');
+      const text = document.getElementById('theme-mode-text');
+      const cssLink = document.getElementById('markdown-theme-css');
+
+      if (isGitHubLight) {
+        previewPanel.classList.add('theme-gh-light');
+        cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-light.min.css';
+        icon.textContent = '☀️';
+        text.textContent = 'Light Mode';
+      } else {
+        previewPanel.classList.remove('theme-gh-light');
+        cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-dark.min.css';
+        icon.textContent = '🌙';
+        text.textContent = 'Dark Mode';
+      }
+    }
+
+    function setViewport(mode) {
+      const wrapper = document.getElementById('previewWrapper');
+      const desktopBtn = document.getElementById('btn-view-desktop');
+      const mobileBtn = document.getElementById('btn-view-mobile');
+
+      if (mode === 'mobile') {
+        wrapper.style.maxWidth = '420px';
+        mobileBtn.classList.add('active');
+        desktopBtn.classList.remove('active');
+      } else {
+        wrapper.style.maxWidth = '960px';
+        desktopBtn.classList.add('active');
+        mobileBtn.classList.remove('active');
+      }
+    }
+
+    function downloadMarkdown() {
+      const md = generateMarkdown();
+      const blob = new Blob([md], { type: 'text/markdown;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'README.md';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Downloaded README.md successfully!');
+    }
+
+    function copyMarkdown() {
+      const md = generateMarkdown();
+      navigator.clipboard.writeText(md).then(() => {
+        showToast('Copied to clipboard! Ready to paste into GitHub.');
+      }).catch(err => {
+        const textarea = document.getElementById('raw-markdown-text');
+        textarea.select();
+        document.execCommand('copy');
+        showToast('Copied to clipboard! Ready to paste into GitHub.');
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    function openGitHubEdit() {
+      window.open('https://github.com/ADITYAKUMARSINGH16/ADITYAKUMARSINGH16/edit/main/README.md', '_blank');
+    }
+
+    // Initialize application
+    loadPersistedState();
+    initSkillChips();
+    renderProjectsEditor();
+    saveAndRender();
+  </script>
+</body>
+</html>

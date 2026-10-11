@@ -24,6 +24,10 @@
       <img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
     </a>
     &nbsp;
+    <a href="https://leetcode.com/u/adityakumarsingh16/" target="_blank">
+      <img src="https://img.shields.io/badge/LeetCode-Profile-FFA116?style=for-the-badge&logo=leetcode&logoColor=white" alt="LeetCode" />
+    </a>
+    &nbsp;
     <img src="https://komarev.com/ghpvc/?username=ADITYAKUMARSINGH16&label=Profile%20Views&color=2563eb&style=for-the-badge" alt="Profile Views" />
   </p>
 
@@ -59,7 +63,7 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
 
 #### Languages & Core
 <p>
-  <img src="https://skillicons.dev/icons?i=python,javascript,c,cpp,html,css&perline=6" alt="Languages" />
+  <img src="https://skillicons.dev/icons?i=python,javascript,typescript,c,cpp,html,css&perline=7" alt="Languages" />
 </p>
 
 #### AI / Data Science & Frameworks
@@ -69,7 +73,7 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
 
 #### Tools, Platforms & DevOps
 <p>
-  <img src="https://skillicons.dev/icons?i=git,github,vscode,docker,linux,postman&perline=6" alt="Tools & Platforms" />
+  <img src="https://skillicons.dev/icons?i=git,github,vscode,docker,linux,postman,mongodb,postgres&perline=8" alt="Tools & Platforms" />
 </p>
 
 </div>
@@ -86,6 +90,19 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
 | 🎭 **[Emotion-Detector](https://github.com/ADITYAKUMARSINGH16/Emotion-Detector)** | Real-time computer vision system detecting human emotions using CNNs and facial landmark tracking. | `Python` `OpenCV` `Deep Learning` |
 | 💡 **[Wiz-Bulb-Sync](https://github.com/ADITYAKUMARSINGH16/Wiz-Bulb-Sync)** | IoT synchronization system providing ambient lighting control with smart bulbs. | `Python` `IoT` `Networking` |
 | 🗺️ **[India-Interactive-Map](https://github.com/ADITYAKUMARSINGH16/India-Interactive-Map)** | Interactive web visualizer showcasing India's states and territories with rich geospatial data. | `HTML5` `CSS3` `JavaScript` |
+
+---
+
+<details>
+<summary><b>🌟 Accreditations, Certifications & Milestones (Click to Expand)</b></summary>
+<br>
+
+- 🏅 **Techno India University Academic & Project Excellence** – CS & Engineering coursework & engineering labs.
+- 🤖 **Hands-on AI/ML R&D** – Offline LLM pipeline integration with Ollama/LangChain and Local Vector Stores.
+- ⚡ **Full-Stack & Hardware Prototyping** – End-to-end integration of IoT controllers with UDP/LAN ambient automation.
+- 🌐 **Open-Source Advocate** – Actively building and contributing developer utilities and open tooling.
+
+</details>
 
 ---
 
@@ -135,6 +152,18 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
 
 </div>
 
+</div>
+
+---
+
+### ⚡ Recent GitHub Activity
+<!-- RECENT_ACTIVITY:start -->
+<!-- This section is dynamically updated automatically via GitHub Actions -->
+- 🚀 Created and maintained open-source repositories in AI, Full-Stack, and IoT
+- 🔧 Actively pushing updates and architectural improvements across personal projects
+- 🌟 Constantly experimenting with next-gen models and developer workflows
+<!-- RECENT_ACTIVITY:end -->
+
 ---
 
 ### 💡 Daily Dev Byte
@@ -161,6 +190,10 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
   &nbsp;
   <a href="https://github.com/ADITYAKUMARSINGH16">
     <img src="https://img.shields.io/badge/GitHub-ADITYAKUMARSINGH16-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+  &nbsp;
+  <a href="https://leetcode.com/u/adityakumarsingh16/" target="_blank">
+    <img src="https://img.shields.io/badge/LeetCode-Profile-FFA116?style=flat-square&logo=leetcode&logoColor=white" alt="LeetCode" />
   </a>
 
 </div>
