@@ -24,15 +24,17 @@
       <img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
     </a>
     &nbsp;
+    <img src="https://komarev.com/ghpvc/?username=ADITYAKUMARSINGH16&label=Profile%20Views&color=2563eb&style=for-the-badge" alt="Profile Views" />
+  </p>
+
+  <p align="center">
     <a href="https://leetcode.com/u/singhaditya7864/" target="_blank">
       <img src="https://img.shields.io/badge/LeetCode-singhaditya7864-FFA116?style=for-the-badge&logo=leetcode&logoColor=white" alt="LeetCode" />
     </a>
-    &nbsp;
+    &nbsp;&nbsp;
     <a href="https://www.geeksforgeeks.org/profile/singhaditya7864" target="_blank">
       <img src="https://img.shields.io/badge/GeeksforGeeks-singhaditya7864-2F8D46?style=for-the-badge&logo=geeksforgeeks&logoColor=white" alt="GeeksforGeeks" />
     </a>
-    &nbsp;
-    <img src="https://komarev.com/ghpvc/?username=ADITYAKUMARSINGH16&label=Profile%20Views&color=2563eb&style=for-the-badge" alt="Profile Views" />
   </p>
 
 </div>
@@ -158,12 +160,26 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
 
 ---
 
-### 🧩 LeetCode & Problem Solving
+### 🧩 Problem Solving & Competitive Programming
 
 <div align="center">
+
+  <p>
+    <a href="https://leetcode.com/u/singhaditya7864/" target="_blank">
+      <img src="https://img.shields.io/badge/LeetCode-singhaditya7864-FFA116?style=for-the-badge&logo=leetcode&logoColor=white" alt="LeetCode" />
+    </a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://www.geeksforgeeks.org/profile/singhaditya7864" target="_blank">
+      <img src="https://img.shields.io/badge/GeeksforGeeks-singhaditya7864-2F8D46?style=for-the-badge&logo=geeksforgeeks&logoColor=white" alt="GeeksforGeeks" />
+    </a>
+  </p>
+
+  <br />
+
   <a href="https://leetcode.com/u/singhaditya7864/" target="_blank">
     <img src="https://leetcard.jacoblin.cool/singhaditya7864?theme=dark&font=Fira%20Code" alt="Aditya's LeetCode Stats" />
   </a>
+
 </div>
 
 ---

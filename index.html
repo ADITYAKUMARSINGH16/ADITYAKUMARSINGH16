@@ -1059,18 +1059,20 @@
     &nbsp;
     <a href="https://github.com/ADITYAKUMARSINGH16">
       <img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
-    </a>` + (leetcode ? `
+    </a>
     &nbsp;
+    <img src="https://komarev.com/ghpvc/?username=ADITYAKUMARSINGH16&label=Profile%20Views&color=2563eb&style=for-the-badge" alt="Profile Views" />
+  </p>` + (leetcode || gfg ? `
+
+  <p align="center">` + (leetcode ? `
     <a href="https://leetcode.com/u/${leetcode}/" target="_blank">
       <img src="https://img.shields.io/badge/LeetCode-${leetcode}-FFA116?style=for-the-badge&logo=leetcode&logoColor=white" alt="LeetCode" />
-    </a>` : '') + (gfg ? `
-    &nbsp;
+    </a>` : '') + (leetcode && gfg ? `
+    &nbsp;&nbsp;` : '') + (gfg ? `
     <a href="https://www.geeksforgeeks.org/profile/${gfg}" target="_blank">
       <img src="https://img.shields.io/badge/GeeksforGeeks-${gfg}-2F8D46?style=for-the-badge&logo=geeksforgeeks&logoColor=white" alt="GeeksforGeeks" />
     </a>` : '') + `
-    &nbsp;
-    <img src="https://komarev.com/ghpvc/?username=ADITYAKUMARSINGH16&label=Profile%20Views&color=2563eb&style=for-the-badge" alt="Profile Views" />
-  </p>
+  </p>` : '') + `
 
 </div>` + (showTrophies ? `
 
@@ -1191,16 +1193,30 @@ ${projectsTable}` + (showAccreditations ? `
 
   <img src="https://streak-stats.demolab.com/?user=ADITYAKUMARSINGH16&theme=${currentTheme}&hide_border=true&background=0d1117&ring=38bdf8&fire=f43f5e&currStreakLabel=38bdf8" alt="GitHub Streak" />` : '') + `
 
-</div>` + (showLeetCodeCard && leetcode ? `
+</div>` + ((showLeetCodeCard && leetcode) || gfg ? `
 
 ---
 
-### 🧩 LeetCode & Problem Solving
+### 🧩 Problem Solving & Competitive Programming
 
 <div align="center">
+
+  <p>` + (leetcode ? `
+    <a href="https://leetcode.com/u/${leetcode}/" target="_blank">
+      <img src="https://img.shields.io/badge/LeetCode-${leetcode}-FFA116?style=for-the-badge&logo=leetcode&logoColor=white" alt="LeetCode" />
+    </a>` : '') + (leetcode && gfg ? `
+    &nbsp;&nbsp;&nbsp;&nbsp;` : '') + (gfg ? `
+    <a href="https://www.geeksforgeeks.org/profile/${gfg}" target="_blank">
+      <img src="https://img.shields.io/badge/GeeksforGeeks-${gfg}-2F8D46?style=for-the-badge&logo=geeksforgeeks&logoColor=white" alt="GeeksforGeeks" />
+    </a>` : '') + `
+  </p>` + (showLeetCodeCard && leetcode ? `
+
+  <br />
+
   <a href="https://leetcode.com/u/${leetcode}/" target="_blank">
     <img src="https://leetcard.jacoblin.cool/${leetcode}?theme=dark&font=Fira%20Code" alt="${name}'s LeetCode Stats" />
-  </a>
+  </a>` : '') + `
+
 </div>` : '') + (showRecent ? `
 
 ---
