@@ -174,11 +174,20 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
     </a>
   </p>
 
-  <br />
-
-  <a href="https://leetcode.com/u/singhaditya7864/" target="_blank">
-    <img src="https://leetcard.jacoblin.cool/singhaditya7864?theme=dark&font=Fira%20Code" alt="Aditya's LeetCode Stats" />
-  </a>
+  <table border="0">
+    <tr>
+      <td align="center" valign="middle">
+        <a href="https://leetcode.com/u/singhaditya7864/" target="_blank">
+          <img src="https://leetcard.jacoblin.cool/singhaditya7864?theme=dark&font=Fira%20Code" alt="Aditya's LeetCode Stats" />
+        </a>
+      </td>
+      <td align="center" valign="middle">
+        <a href="https://www.geeksforgeeks.org/profile/singhaditya7864" target="_blank">
+          <img src="https://gfgstatscard.vercel.app/singhaditya7864?theme=dark" alt="Aditya's GeeksforGeeks Stats" />
+        </a>
+      </td>
+    </tr>
+  </table>
 
 </div>
 
