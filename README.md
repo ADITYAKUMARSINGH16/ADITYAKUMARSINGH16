@@ -89,7 +89,19 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
 
 ---
 
-### 📊 GitHub Analytics & Streak
+### 🐍 Contribution Activity Graph
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ADITYAKUMARSINGH16/ADITYAKUMARSINGH16/output/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ADITYAKUMARSINGH16/ADITYAKUMARSINGH16/output/github-contribution-grid-snake.svg">
+    <img alt="Aditya's GitHub Contribution Grid Snake" src="https://raw.githubusercontent.com/ADITYAKUMARSINGH16/ADITYAKUMARSINGH16/output/github-contribution-grid-snake-dark.svg" width="100%" />
+  </picture>
+</div>
+
+---
+
+### 📊 GitHub Analytics & Productivity
 
 <div align="center">
 
@@ -106,8 +118,29 @@ passions: Clean Code, Open Source, Deep Learning, Problem Solving
 
   <br />
 
+  <table border="0">
+    <tr>
+      <td>
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ADITYAKUMARSINGH16&theme=tokyonight" alt="Profile Details" />
+      </td>
+      <td>
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ADITYAKUMARSINGH16&theme=tokyonight&utcOffset=5.5" alt="Productive Hours (IST)" />
+      </td>
+    </tr>
+  </table>
+
+  <br />
+
   <img src="https://streak-stats.demolab.com/?user=ADITYAKUMARSINGH16&theme=tokyonight&hide_border=true&background=0d1117&ring=38bdf8&fire=f43f5e&currStreakLabel=38bdf8" alt="GitHub Streak" />
 
+</div>
+
+---
+
+### 💡 Daily Dev Byte
+
+<div align="center">
+  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Daily Programming Quote" />
 </div>
 
 ---
